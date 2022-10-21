@@ -2,6 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import api from "./api/api.js";
 import pageGenerator from "./modules/pageGenerator.js";
+import { TITLE } from "./config.js";
 
 const app = new express.Router();
 
@@ -13,14 +14,13 @@ app.use(express.static("public"));
 
 app.use("/api", api);
 
-app.use("/*", (req, res) => {
-  let pagePath = "./pages" + req.baseUrl + ".html";
+app.use("/arnaud", (req, res) => {
+    res.write(pageGenerator("./pages/arnaud.html", "Arnaud", ["/js/arnaud.js"]));
+    res.end();
+});
 
-  if (req.baseUrl == "" || req.baseUrl == "/") {
-    pagePath = "./pages/index.html";
-  }
-
-  res.write(pageGenerator(pagePath));
+app.use("/", (req, res) => {
+  res.write(pageGenerator("./pages/index.html", "Home", ["/js/home.js"]));
   res.end();
 });
 

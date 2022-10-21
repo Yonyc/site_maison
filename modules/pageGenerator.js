@@ -20,7 +20,7 @@ sass.render({
 });
 /* End of SASS render */
 
-export default function pageGenerator(path, args={}) {
+export default function pageGenerator(path, title = "", scripts = [], stylesSheets = []) {
     /*
     Function generating a page
         - open header and content path 
@@ -49,10 +49,10 @@ export default function pageGenerator(path, args={}) {
         console.error(err)
     }
 
-    return template(header, content, args);
+    return template(header, content, title, scripts, stylesSheets);
 }
 
-function template(header = "", content = "", args = {}) {
+function template(header = "", content = "", title = "", scripts = [], stylesSheets = []) {
     /*
     Function generating a page from a template
         - Parse styleSheets urls and scripts urls
@@ -64,32 +64,29 @@ function template(header = "", content = "", args = {}) {
     @POST:
         Generated HTML code
     */
-    let stylesSheets = "";
-    if (args.styleSheets) {
-        args.styleSheets.forEach(style => {
-            stylesSheets += `<link rel="stylesheet" href="${style}">`;
-        });
-    }
-    let scripts = "";
-    if (args.scripts) {
-        args.scripts.forEach(script => {
-            scripts += `<script src="${script}"></script>`;
-        });
-    }
+    let stylesSheets_html = "";
+    stylesSheets.forEach(style => {
+        stylesSheets_html += `<link rel="stylesheet" href="${style}">`;
+    });
+
+    let scripts_html = "";
+    scripts.forEach(script => {
+        scripts_html += `<script src="${script}"></script>`;
+    });
     return `<html lang="fr">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>${args.title ?? ""}</title>
+        <title>${title ?? ""}</title>
         <link rel="stylesheet" href="/css/style.css">
-        ${stylesSheets}
+        ${stylesSheets_html}
     </head>
     <body>
         <header>${header}</header>
         <div class="container">${content}</div>
         <script src="/js/main.js"></script>
-        ${scripts}
+        ${scripts_html}
     </body>
-    </html>`;
+    </html>`.replace("\n", "");
 }
