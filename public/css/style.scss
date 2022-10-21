@@ -1,7 +1,78 @@
-nav {
+html {
     width: 100%;
+    height: 100%;
+}
 
-    .banane {
-        content: "banane";
+body {
+    background-color: black;
+    min-height: 100%;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    height: 0;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+
+/* Rouded Image */
+.rounded-image {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 1;
+        transition: scale .5s ease;
+
+        &:hover {
+            scale: 1.1;
+        }
+    }
+}
+
+/* Cards */
+.card {
+
+}
+
+/* Home page */
+.home {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    > div {
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+        gap: 50px;
+        flex-wrap: wrap;
+    
+        .card {
+            cursor: pointer;
+        }
+    }
+}
+
+/* Arnaud */
+.arnaud {
+    margin: 50px 0;
+    display: flex;
+    flex-direction: column;
+    > * {
+        margin: auto
     }
 }
