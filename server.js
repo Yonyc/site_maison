@@ -1,30 +1,26 @@
-import express from "express";
-import bodyParser from "body-parser";
-import api from "./api/api.js";
-import pageGenerator from "./modules/pageGenerator.js";
 
-const app = express();
-const port = 3000;
+import http from "http";
+import https from "https";
+
+import { PORT, PORTS, httpsCreditentials } from "./config.js";
+import app from "./app.js";
 
 
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
 
-app.use(express.static("public"));
+if (httpsCreditentials) {
+  https.createServer(httpsCreditentials, app).listen(PORT, () => console.log(`Server listening HTTPS on port ${PORT}`));
+} else {
+  http.createServer(app).listen(PORT, () => console.log(`Server listening HTTP on port ${PORT}`));
+}
 
-app.use("/api", api);
 
-app.use("/*", (req, res) => {
-  let pagePath = "./pages" + req.baseUrl + ".html";
-
-  if (req.baseUrl == "" || req.baseUrl == "/") {
-    pagePath = "./pages/index.html";
+PORTS.forEach(p => {
+  try {
+    http.createServer((req, res) => {
+      res.writeHead(301, { "Location": `http${httpsCreditentials ? "s" : ""}://` + req.headers.host.replace(p,PORT) + req.url});
+      res.end();
+    }).listen(p, () => console.log(`Redirecting port ${p} to ${PORT}`));
+  } catch (error) {
+    console.log(`Can't open port '${p}'\n${error}`);
   }
-
-  res.write(pageGenerator(pagePath));
-  res.end();
 });
-
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
-})

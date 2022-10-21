@@ -82,12 +82,13 @@ function template(header = "", content = "", args = {}) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>${args.title ?? ""}</title>
-        <link rel="stylesheet" href="/css/main.css">
+        <link rel="stylesheet" href="/css/style.css">
         ${stylesSheets}
     </head>
     <body>
         <header>${header}</header>
-        <div class="content">${content}</div>
+        <div class="container">${content}</div>
+        <script src="/js/main.js"></script>
         ${scripts}
     </body>
     </html>`;
