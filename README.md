@@ -1,30 +1,14 @@
- LINFO1212 - PROJET PRÉPARATOIRE V1 - GROUPE 3
+ Site prévu pour le domaine werya.be
 ===============================================
 
 -----------------------------------------------------------------
-Information(s) sur le délivrable (V1)
+Information(s)
 -----------------------------------------------------------------
 
-LINFO1212 - Projet d'approfondissement en sciences informatiques
-
-GROUPE A.03
-
-Projet préparatoire V1 (Version 1)
-
-06 OCTOBRE 2022
+Le but de ce site est de créer un site itractif muni d'une api afin de simplifier au maximum les interactions utilisateur
 
 -----------------------------------------------------------------
-Membre(s) du groupe de projet
+Auteur
 -----------------------------------------------------------------
 
-(Format NOM Prénom)
-
-- BURIE Jarod
 - WERY Arnaud
-- PEREZ Jhon
-
------------------------------------------------------------------
-Améliorations possibles sur le délivrable (V1)
------------------------------------------------------------------
-
-Ce premier rendu n'est que la version 1 du projet préparatoire. 
