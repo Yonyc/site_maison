@@ -1,5 +1,5 @@
 import express from "express";
-import { exec } from "child_process";
+import { WOL } from "./functions.js";
 
 const alex = new express.Router();
 
