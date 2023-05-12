@@ -1,5 +1,11 @@
 FROM node:16
 
+ADD crontab /etc/cron.d/update-cron
+RUN chmod 0644 /etc/cron.d/update-cron
+RUN touch /var/log/cron.log
+RUN apt-get update
+RUN apt-get -y install cron git
+
 # Create app directory
 WORKDIR /usr/src/app
 
@@ -16,4 +22,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 80
-CMD [ "node", "server.js" ]
+CMD nodemon server.js && cron && tail -f /var/log/cron.log

@@ -16,6 +16,7 @@
     "fs": "^0.0.1-security",
     "mysql2": "^2.3.3",
     "node-sass": "^7.0.3",
+    "nodemon": "^2.0.22",
     "sequelize": "^6.23.1"
   },
   "type": "module"
