@@ -1,8 +1,8 @@
 import fs from "fs";
-import sass from 'node-sass';
+//import sass from 'node-sass';
 
 /* SASS render at server startup */
-sass.render({
+/* sass.render({
     file: "./public/css/style.scss",
     outFile: "./public/css/style.css",
     outputStyle: "expanded"
@@ -17,7 +17,7 @@ sass.render({
             console.log(err);
         }
     });
-});
+}); */
 /* End of SASS render */
 
 export default function pageGenerator(path, title = "", scripts = [], stylesSheets = []) {

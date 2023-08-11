@@ -1,0 +1,15 @@
+.container {
+    width: min(100%, 800px);
+}
+
+.container * {
+    color: white;
+}
+
+p {
+    text-align: left;
+}
+
+ul.star li::marker {
+    content: "🌟";
+}
