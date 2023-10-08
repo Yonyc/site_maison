@@ -19,7 +19,7 @@ app.use("/api", api);
 
 app.use("/alex", alex);
 app.use("/arnaud", arnaud);
-app.use("/arnaud", arthur);
+app.use("/arthur", arthur);
 
 /* app.use("/arnaud", (req, res) => {
     res.write(pageGenerator("./pages/arnaud.html", "Arnaud", ["/js/arnaud.js"]));
